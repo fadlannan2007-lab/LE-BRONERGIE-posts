@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LE'BRONERGIE - L'Énergie du King</title>
+    <style>
+      :root {
+        --primary-gold: #c5a059;
+        --deep-purple: #552583;
+        --bg-dark: #00ab78;
+        --card-bg: rgba(255, 255, 255, 0.05);
+        --blue-react: #00d4ff;
+      }
+
+      body {
+        font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+        background-color: #06490f;
+        color: white;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 40px 20px;
+      }
+
+      header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
+
+      .logo {
+        width: 150px;
+        height: auto;
+        border-radius: 15px;
+        border: 2px solid var(--primary-gold);
+        margin-bottom: 15px;
+        cursor: pointer;
+        transition: transform 0.3s;
+      }
+
+      .logo:hover {
+        transform: scale(1.05);
+      }
+
+      h1 {
+        letter-spacing: 4px;
+        font-size: 2.5rem;
+        margin: 0;
+      }
+
+      .feed-container {
+        max-width: 550px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+      }
+
+      /* Styles des Posts */
+      .post {
+        background: var#041dff;
+        border-radius: 12px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        overflow: hidden;
+        backdrop-filter: blur(10px);
+      }
+
+      .post-header {
+        padding: 12px 15px;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .avatar {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        background: linear-gradient(
+          45deg,
+          var(--deep-purple),
+          var(--primary-gold)
+        );
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 0.8rem;
+      }
+
+      .platform-tag {
+        margin-left: auto;
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        padding: 3px 8px;
+        border-radius: 4px;
+        opacity: 0.8;
+      }
+
+      /* Simulation d'image de réacteur */
+      .reactor-visual {
+        width: 100%;
+        height: 300px;
+        background: radial-gradient(circle, #1a1a2e 0%, #000 100%);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .atom-core {
+        width: 60px;
+        height: 60px;
+        background: var(--primary-gold);
+        border-radius: 50%;
+        box-shadow: 0 0 50px var(--primary-gold);
+        z-index: 2;
+      }
+
+      .orbit {
+        position: absolute;
+        border: 1px solid rgba(197, 160, 89, 0.3);
+        border-radius: 50%;
+        animation: rotate 4s linear infinite;
+      }
+      .avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .avatar img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .content {
+        padding: 15px;
+        font-size: 0.95rem;
+        line-height: 1.5;
+      }
+
+      .actions {
+        padding: 10px 15px;
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        display: flex;
+        gap: 20px;
+      }
+
+      .btn-like {
+        background: none;
+        border: none;
+        color: #ccc;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        transition: 0.2s;
+        font-size: 1rem;
+      }
+
+      .btn-like.active {
+        color: #ff3040;
+        transform: scale(1.1);
+      }
+      .btn-like.active-fb {
+        color: #1877f2;
+      }
+
+      .stats {
+        padding: 0 15px 15px;
+        font-size: 0.85rem;
+        color: #888;
+      }
+
+      /* Couleurs plateformes */
+      .ig-tag {
+        background: #e1306c;
+      }
+      .fb-tag {
+        background: #1877f2;
+      }
+      .x-tag {
+        background: #fff;
+        color: #000;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <img src="opa.png" alt="Logo LE'BRONERGIE" class="logo" />
+      <h1>LE'BRONERGIE</h1>
+      <p style="color: var(--primary-gold); font-weight: bold">
+        L'ÉLU. LA PUISSANCE. LE FUTUR.
+      </p>
+    </header>
+
+    <div class="feed-container">
+      <article class="post">
+        <div class="post-header">
+          <div class="avatar">
+            <img
+              src="https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png"
+              alt="Profile avatar"
+            />
+          </div>
+          <div>
+            <strong>kingjames_officiel</strong><br /><small
+              >Réacteur Fusion de Cleveland</small
+            >
+          </div>
+          <span class="platform-tag ig-tag">Instagram</span>
+        </div>
+        <div class="reactor-visual">
+          <div class="atom-core"></div>
+          <div class="orbit" style="width: 120px; height: 50px"></div>
+          <div
+            class="orbit"
+            style="width: 120px; height: 50px; transform: rotate(120deg)"
+          ></div>
+          <p
+            style="
+              position: absolute;
+              bottom: 10px;
+              font-size: 0.7rem;
+              color: var(--primary-gold);
+            "
+          >
+            VISUEL RÉACTEUR LBR-23
+          </p>
+        </div>
+        <div class="actions">
+          <button class="btn-like" onclick="toggleLike(this)">
+            ❤️ <span class="count">2.4M</span>
+          </button>
+          <span>💬 15k</span>
+          <span>✈️</span>
+        </div>
+        <div class="content">
+          <strong>kingjames_officiel</strong> Pas seulement un King sur le
+          terrain, mais aussi le King du réseau électrique. ⚡ Notre nouveau
+          réacteur à fusion est officiellement OPÉRATIONNEL. On ne cherche pas
+          que des bagues, on cherche l'énergie infinie. 🏆⚛️ <br /><br />
+          <span style="color: #4a9eff"
+            >#LeBronergie #Grandeur #EnergieNucleaire #LeFutur</span
+          >
+        </div>
+      </article>
+
+      <article class="post">
+        <div class="post-header">
+          <div class="avatar">
+            <img src="opa.png" alt="logo of a company" />
+          </div>
+          <div>
+            <strong>LE'BRONERGIE</strong><br /><small
+              >Sponsorisé • Public</small
+            >
+          </div>
+          <span class="platform-tag fb-tag">Facebook</span>
+        </div>
+        <div class="content">
+          Aujourd'hui, notre PDG LeBron James a annoncé l'initiative
+          <strong>"JE PROMETS D'ÉCLAIRER"</strong>. <br /><br />
+          Pour chaque Megawatt produit dans notre centrale d'Ohio, nous
+          fournissons de l'électricité gratuite aux écoles et centres
+          communautaires locaux. Parce que la puissance d'un leader se mesure à
+          l'énergie qu'il redonne aux autres. 💡
+        </div>
+        <div class="actions">
+          <button class="btn-like" onclick="toggleLike(this, 'fb')">
+            👍 <span class="count">542k</span>
+          </button>
+          <span>Commenter</span>
+          <span>Partager</span>
+        </div>
+        <div class="stats">75 000 partages • 12k commentaires</div>
+      </article>
+
+      <article class="post">
+        <div class="post-header">
+          <div class="avatar">
+            <img
+              src="https://cdn.nba.com/headshots/nba/latest/1040x760/2544.png"
+              alt="portrait of lebron james"
+            />
+          </div>
+          <div><strong>LeBron James</strong> @KingJames</div>
+          <span class="platform-tag x-tag">X </span>
+        </div>
+        <div class="content" style="font-size: 1.2rem">
+          Le triple-double de l'énergie :
+          <br />✅ Zéro Émission <br />✅ Efficacité Maximale <br />✅ Construit
+          pour les GOATs <br /><br />
+          Bienvenue dans l'ère LE'BRONERGIE. On travaille ! 😤🚀⚛️
+        </div>
+        <div class="actions">
+          <button class="btn-like" onclick="toggleLike(this)">
+            ❤️ <span class="count">850k</span>
+          </button>
+          <span>🔄 120k</span>
+          <span>📊 15M</span>
+        </div>
+      </article>
+    </div>
+
+    <script>
+      function toggleLike(btn, type) {
+        btn.classList.toggle("active");
+        if (type === "fb") btn.classList.toggle("active-fb");
+
+        let countSpan = btn.querySelector(".count");
+        // Simulation simple de changement de texte
+        if (btn.classList.contains("active")) {
+          countSpan.style.fontWeight = "bold";
+        } else {
+          countSpan.style.fontWeight = "normal";
+        }
+      }
+    </script>
+  </body>
+</html>
